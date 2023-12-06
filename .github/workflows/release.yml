@@ -1,0 +1,28 @@
+name: Release
+
+on:
+  push:
+    tags:
+    - '*.*.*'
+jobs:
+  release:
+    runs-on: windows-latest   
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup dotnet 8.0
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Clean
+        run: dotnet clean -c Release
+
+      - name: Build
+        run: dotnet build -c Release
+
+      - name: Pack
+        run: dotnet pack -c Release
+        
+      - name: Publish to Nuget.org
+        run: dotnet nuget push .\output\Release\*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
