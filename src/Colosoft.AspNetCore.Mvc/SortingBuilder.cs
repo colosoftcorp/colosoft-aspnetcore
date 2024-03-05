@@ -19,23 +19,23 @@
                 return this;
             }
 
-            var campos = expression.Split(',').Select(f => f.Trim());
+            var expressionFields = expression.Split(',').Select(f => f.Trim());
 
-            foreach (var campo in campos)
+            foreach (var expressionField in expressionFields)
             {
-                if (string.IsNullOrEmpty(campo))
+                if (string.IsNullOrEmpty(expressionField))
                 {
                     continue;
                 }
 
-                var partes = campo.Split(' ');
-                if (partes.Length > 1)
+                var parts = expressionField.Split(':');
+                if (parts.Length > 1)
                 {
-                    this.AddField(partes[0], !StringComparer.InvariantCultureIgnoreCase.Equals(partes[1], DescendingTerm));
+                    this.AddField(parts[0], !StringComparer.InvariantCultureIgnoreCase.Equals(parts[1], DescendingTerm));
                 }
                 else
                 {
-                    this.AddField(partes[0], true);
+                    this.AddField(parts[0], true);
                 }
             }
 

@@ -9,7 +9,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Colosoft.AspNetCore.Mvc.Abs
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Colosoft.AspNetCore.Mvc", "src\Colosoft.AspNetCore.Mvc\Colosoft.AspNetCore.Mvc.csproj", "{8DF1A8A7-9496-4E7E-A90A-3FEB6BF3E8FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colosoft.AspNetCore.Mvc.NewtonsoftJson", "src\Colosoft.AspNetCore.Mvc.NewtonsoftJson\Colosoft.AspNetCore.Mvc.NewtonsoftJson.csproj", "{42D0658F-8C5E-4734-8503-FF484194524C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Colosoft.AspNetCore.Mvc.NewtonsoftJson", "src\Colosoft.AspNetCore.Mvc.NewtonsoftJson\Colosoft.AspNetCore.Mvc.NewtonsoftJson.csproj", "{42D0658F-8C5E-4734-8503-FF484194524C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colosoft.AspNetCore.Diagnostics", "src\Colosoft.AspNetCore.Diagnostics\Colosoft.AspNetCore.Diagnostics.csproj", "{182BEA0C-D207-4425-87A6-2E2C5A134EEC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{97A130AE-732F-44D7-8010-C991C3164EEE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{62B72FF4-57CE-467E-8B65-BE14877F42D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreSample", "samples\AspNetCoreSample\AspNetCoreSample.csproj", "{E8DA5AF6-F56D-44B4-BC3D-954C69F6C317}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +37,14 @@ Global
 		{42D0658F-8C5E-4734-8503-FF484194524C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42D0658F-8C5E-4734-8503-FF484194524C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42D0658F-8C5E-4734-8503-FF484194524C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{182BEA0C-D207-4425-87A6-2E2C5A134EEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{182BEA0C-D207-4425-87A6-2E2C5A134EEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{182BEA0C-D207-4425-87A6-2E2C5A134EEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{182BEA0C-D207-4425-87A6-2E2C5A134EEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8DA5AF6-F56D-44B4-BC3D-954C69F6C317}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8DA5AF6-F56D-44B4-BC3D-954C69F6C317}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8DA5AF6-F56D-44B4-BC3D-954C69F6C317}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8DA5AF6-F56D-44B4-BC3D-954C69F6C317}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,5 +53,10 @@ Global
 		{C668A236-2CB8-4B8A-B13B-4E15935E2D79} = {38B4D5DE-F628-4273-95F5-9FA5935ED14A}
 		{8DF1A8A7-9496-4E7E-A90A-3FEB6BF3E8FF} = {38B4D5DE-F628-4273-95F5-9FA5935ED14A}
 		{42D0658F-8C5E-4734-8503-FF484194524C} = {38B4D5DE-F628-4273-95F5-9FA5935ED14A}
+		{182BEA0C-D207-4425-87A6-2E2C5A134EEC} = {38B4D5DE-F628-4273-95F5-9FA5935ED14A}
+		{E8DA5AF6-F56D-44B4-BC3D-954C69F6C317} = {62B72FF4-57CE-467E-8B65-BE14877F42D2}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {21722584-B52C-43F5-8E3E-36D29DCC6AD4}
 	EndGlobalSection
 EndGlobal

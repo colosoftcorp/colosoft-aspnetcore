@@ -4,7 +4,7 @@ namespace Colosoft.AspNetCore.Mvc.ModelBinding
 {
     internal class SortingModelBinder : IModelBinder
     {
-        private const string SortingFieldName = "sorting";
+        private const string SortingFieldName = "sort";
 
         public Task BindModelAsync(ModelBindingContext bindingContext)
         {
@@ -59,11 +59,11 @@ namespace Colosoft.AspNetCore.Mvc.ModelBinding
 
         private ISorting Translate(
             ISorting sorting,
-            System.Type tipoTradutor,
+            Type translatorType,
             ISortingBuilderFactory sortingBuilderFactory,
             ISortingTranslatorFactory sortingTranslatorFactory)
         {
-            var translator = sortingTranslatorFactory.Create(tipoTradutor);
+            var translator = sortingTranslatorFactory.Create(translatorType);
             if (translator != null)
             {
                 var builder = sortingBuilderFactory.Create();
