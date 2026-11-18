@@ -25,4 +25,4 @@ jobs:
         run: dotnet pack -c Release
         
       - name: Publish to Nuget.org
-        run: dotnet nuget push .\output\Release\*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
+        run: dotnet nuget push .\output\Release\*.nupkg -k ${{ secrets.COLOSOFT_NUGET_API_KEY }} -s https://www.colosoft.com.br/nuget --skip-duplicate
