@@ -2,7 +2,11 @@
 
 namespace Colosoft.AspNetCore.Mvc.ModelBinding
 {
-    [AttributeUsage(AttributeTargets.Method)]
+    /// <summary>
+    /// Sets the translation of the sorting of an action, on the action method or on its <see cref="ISorting"/>
+    /// parameter.
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Parameter)]
     public class SortingTranslationAttribute : Attribute
     {
         public SortingTranslationAttribute(Type translatorType)

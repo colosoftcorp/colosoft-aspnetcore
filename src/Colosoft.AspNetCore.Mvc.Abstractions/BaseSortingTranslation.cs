@@ -4,20 +4,22 @@ namespace Colosoft.AspNetCore.Mvc
 {
     public abstract class BaseSortingTranslation : ISortingTranslation
     {
-        private readonly string[] sortingData;
+        private readonly string sorting;
         private readonly Lazy<string> sortingTranslated;
 
         protected BaseSortingTranslation(string sorting)
         {
-            this.sortingData = string.IsNullOrWhiteSpace(sorting)
-                ? new string[0]
-                : sorting.Split(' ');
-
+            this.sorting = sorting;
             this.sortingTranslated = new Lazy<string>(() => this.TranslateSorting());
         }
 
         protected abstract string DefaultSorting { get; }
 
+        /// <summary>
+        /// Translates the first field of the sorting and keeps its direction.
+        /// </summary>
+        /// <returns>The translated sorting.</returns>
+        /// <exception cref="SortingFormatException">The field or the direction of the sorting is not valid.</exception>
         public string Translate()
         {
             return this.sortingTranslated.Value;
@@ -25,28 +27,35 @@ namespace Colosoft.AspNetCore.Mvc
 
         protected abstract string TranslateField(string field);
 
+        private string AddDirection(string field, bool isAscending) =>
+            string.Format(
+                "{0} {1}",
+                field,
+                isAscending ? SortingSyntax.AscendingTerm : SortingSyntax.DescendingTerm);
+
         private string TranslateSorting()
         {
-            if (this.sortingData.Length == 0)
+            if (string.IsNullOrWhiteSpace(this.sorting))
             {
                 return this.DefaultSorting;
             }
 
-            var traducao = this.TranslateField(this.sortingData[0])
+            // Only the first field is translated, as before; the direction is asc or desc, never the client text.
+            var item = this.sorting.Split(',')[0];
+
+            if (string.IsNullOrWhiteSpace(item))
+            {
+                return this.DefaultSorting;
+            }
+
+            SortingSyntax.ParseItem(item, out var field, out var isAscending);
+
+            var traducao = this.TranslateField(field)
                 ?? this.DefaultSorting;
 
             return traducao != this.DefaultSorting
-                ? this.AddDirection(traducao)
+                ? this.AddDirection(traducao, isAscending)
                 : traducao;
-        }
-
-        private string AddDirection(string field)
-        {
-            string direcao = this.sortingData.Length > 1
-                ? string.Format(" {0}", this.sortingData[1])
-                : string.Empty;
-
-            return field + direcao;
         }
     }
 }

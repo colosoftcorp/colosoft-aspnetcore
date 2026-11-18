@@ -2,12 +2,11 @@
 {
     internal class SortingBuilder : ISortingBuilder
     {
-        private const string DescendingTerm = "desc";
-
         private readonly IList<ISortField> fields = new List<ISortField>();
 
         public ISortingBuilder AddField(string name, bool isAscending)
         {
+            SortingSyntax.EnsureValidFieldName(name);
             this.fields.Add(new SortField(name, isAscending));
             return this;
         }
@@ -28,15 +27,8 @@
                     continue;
                 }
 
-                var parts = expressionField.Split(':');
-                if (parts.Length > 1)
-                {
-                    this.AddField(parts[0], !StringComparer.InvariantCultureIgnoreCase.Equals(parts[1], DescendingTerm));
-                }
-                else
-                {
-                    this.AddField(parts[0], true);
-                }
+                SortingSyntax.ParseItem(expressionField, out var name, out var isAscending);
+                this.AddField(name, isAscending);
             }
 
             return this;

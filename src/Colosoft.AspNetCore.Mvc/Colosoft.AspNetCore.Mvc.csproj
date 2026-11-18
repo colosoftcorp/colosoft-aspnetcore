@@ -15,6 +15,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <InternalsVisibleTo Include="Colosoft.AspNetCore.Mvc.Test" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <ProjectReference Include="..\Colosoft.AspNetCore.Mvc.Abstractions\Colosoft.AspNetCore.Mvc.Abstractions.csproj" />
 	</ItemGroup>
 
